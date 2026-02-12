@@ -2,10 +2,11 @@ package gitpanda_fetcher
 
 import (
 	"fmt"
-	"github.com/cockroachdb/errors"
-	"gitlab.com/gitlab-org/api/client-go"
 	"net/http"
 	"strings"
+
+	"github.com/cockroachdb/errors"
+	"gitlab.com/gitlab-org/api/client-go"
 )
 
 const titleSeparator = " · "

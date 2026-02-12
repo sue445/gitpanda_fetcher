@@ -5,10 +5,9 @@ import (
 	"testing"
 	"time"
 
+	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"
 	"github.com/sue445/gitpanda_fetcher/testutil"
-
-	"github.com/jarcoal/httpmock"
 )
 
 func tp(t time.Time) *time.Time {

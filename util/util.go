@@ -2,10 +2,11 @@ package util
 
 import (
 	"fmt"
-	"github.com/cockroachdb/errors"
 	"regexp"
 	"strings"
 	"time"
+
+	"github.com/cockroachdb/errors"
 )
 
 // TruncateWithLine truncate string with line

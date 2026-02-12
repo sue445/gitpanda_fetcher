@@ -2,14 +2,15 @@ package gitpanda_fetcher
 
 import (
 	"fmt"
-	"github.com/cockroachdb/errors"
-	"github.com/sue445/gitpanda_fetcher/util"
-	"gitlab.com/gitlab-org/api/client-go"
-	"golang.org/x/sync/errgroup"
 	"regexp"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/cockroachdb/errors"
+	"github.com/sue445/gitpanda_fetcher/util"
+	"gitlab.com/gitlab-org/api/client-go"
+	"golang.org/x/sync/errgroup"
 )
 
 type snippetFetcher struct {

@@ -1,9 +1,10 @@
 package gitpanda_fetcher
 
 import (
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/sue445/gitpanda_fetcher/testutil"
-	"testing"
 )
 
 func Test_normalizeJobTrace(t *testing.T) {

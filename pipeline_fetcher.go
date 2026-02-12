@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/cockroachdb/errors"
-	"github.com/sue445/gitpanda/util"
+	"github.com/sue445/gitpanda_fetcher/util"
 	"gitlab.com/gitlab-org/api/client-go"
 	"golang.org/x/sync/errgroup"
 )

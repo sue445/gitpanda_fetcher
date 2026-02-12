@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/sue445/gitpanda/testutil"
+	"github.com/sue445/gitpanda_fetcher/testutil"
 
 	"github.com/jarcoal/httpmock"
 )

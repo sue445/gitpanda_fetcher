@@ -2,7 +2,7 @@ package gitpanda_fetcher
 
 import (
 	"github.com/stretchr/testify/assert"
-	"github.com/sue445/gitpanda/testutil"
+	"github.com/sue445/gitpanda_fetcher/testutil"
 	"testing"
 )
 

@@ -7,6 +7,7 @@ _GITLAB is a trademark of GitLab Inc. in the United States and other countries a
 [![test](https://github.com/sue445/gitpanda_fetcher/actions/workflows/test.yml/badge.svg)](https://github.com/sue445/gitpanda_fetcher/actions/workflows/test.yml)
 [![GoDoc](https://godoc.org/github.com/sue445/gitpanda_fetcher?status.svg)](https://godoc.org/github.com/sue445/gitpanda_fetcher)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sue445/gitpanda_fetcher)](https://goreportcard.com/report/github.com/sue445/gitpanda_fetcher)
+[![Coverage Status](https://coveralls.io/repos/github/sue445/gitpanda_fetcher/badge.svg)](https://coveralls.io/github/sue445/gitpanda_fetcher)
 
 ## Usage
 ```go

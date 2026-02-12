@@ -10,15 +10,15 @@ import (
 
 const titleSeparator = " · "
 
-// URLParser represents GitLab URL parser
-type URLParser struct {
+// Client represents GitLab URL parser
+type Client struct {
 	baseURL        string
 	client         *gitlab.Client
 	isDebugLogging bool
 }
 
-// URLParserParams represents parameters of NewGitlabURLParser
-type URLParserParams struct {
+// ClientParams represents parameters of NewClient
+type ClientParams struct {
 	APIEndpoint    string
 	BaseURL        string
 	PrivateToken   string
@@ -27,9 +27,9 @@ type URLParserParams struct {
 	HTTPClient     *http.Client
 }
 
-// NewGitlabURLParser create new URLParser instance
-func NewGitlabURLParser(params *URLParserParams) (*URLParser, error) {
-	p := &URLParser{
+// NewClient create new Client instance
+func NewClient(params *ClientParams) (*Client, error) {
+	p := &Client{
 		baseURL:        params.BaseURL,
 		isDebugLogging: params.IsDebugLogging,
 	}
@@ -56,7 +56,7 @@ func NewGitlabURLParser(params *URLParserParams) (*URLParser, error) {
 }
 
 // FetchURL fetch GitLab url
-func (p *URLParser) FetchURL(url string) (*Page, error) {
+func (p *Client) FetchURL(url string) (*Page, error) {
 	if !strings.HasPrefix(url, p.baseURL) {
 		return nil, nil
 	}

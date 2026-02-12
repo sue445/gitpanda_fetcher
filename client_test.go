@@ -14,7 +14,7 @@ func tp(t time.Time) *time.Time {
 	return &t
 }
 
-func TestGitlabUrlParser_FetchURL(t *testing.T) {
+func TestClient_FetchURL(t *testing.T) {
 	httpmock.Activate(t)
 
 	// Register stub
@@ -143,7 +143,7 @@ func TestGitlabUrlParser_FetchURL(t *testing.T) {
 		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/epic_note.json")),
 	)
 
-	p, err := NewGitlabURLParser(&URLParserParams{
+	c, err := NewClient(&ClientParams{
 		APIEndpoint:    "http://example.com/api/v4",
 		BaseURL:        "http://example.com",
 		PrivateToken:   "xxxxxxxxxx",
@@ -1011,7 +1011,7 @@ func TestGitlabUrlParser_FetchURL(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := p.FetchURL(tt.args.url)
+			got, err := c.FetchURL(tt.args.url)
 
 			if assert.NoError(t, err) {
 				assert.Equal(t, tt.want, got)

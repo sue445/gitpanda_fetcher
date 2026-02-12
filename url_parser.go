@@ -45,7 +45,12 @@ func NewGitlabURLParser(params *URLParserParams) (*URLParser, error) {
 	}
 
 	p.client = client
-	p.client.UserAgent = params.UserAgent
+
+	if params.UserAgent == "" {
+		p.client.UserAgent = "gitpanda_fetcher (+https://github.com/sue445/gitpanda_fetcher)"
+	} else {
+		p.client.UserAgent = params.UserAgent
+	}
 
 	return p, nil
 }

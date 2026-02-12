@@ -16,7 +16,6 @@ func main() {
 		APIEndpoint:    "https://gitlab.example.com/api/v4",
 		BaseURL:        "https://gitlab.example.com",
 		PrivateToken:   "xxxxxxxxxx",
-		UserAgent:      "gitpanda_fetcher/v0.1.0 (+https://github.com/sue445/gitpanda_fetcher)",
 		IsDebugLogging: true,
 	})
 

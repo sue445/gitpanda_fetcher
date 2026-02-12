@@ -3,7 +3,10 @@ Module for parsing [GitLab™](https://about.gitlab.com/) URLs and retrieving in
 
 _GITLAB is a trademark of GitLab Inc. in the United States and other countries and regions_
 
+[![Latest Version](https://img.shields.io/github/v/tag/sue445/gitpanda_fetcher)](https://github.com/sue445/gitpanda_fetcher/tags)
 [![test](https://github.com/sue445/gitpanda_fetcher/actions/workflows/test.yml/badge.svg)](https://github.com/sue445/gitpanda_fetcher/actions/workflows/test.yml)
+[![GoDoc](https://godoc.org/github.com/sue445/gitpanda_fetcher?status.svg)](https://godoc.org/github.com/sue445/gitpanda_fetcher)
+[![Go Report Card](https://goreportcard.com/badge/github.com/sue445/gitpanda_fetcher)](https://goreportcard.com/report/github.com/sue445/gitpanda_fetcher)
 
 ## Usage
 ```go

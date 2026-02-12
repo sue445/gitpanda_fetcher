@@ -1,4 +1,4 @@
-package gitpanda_fetcher
+package fetcher
 
 import (
 	"testing"

@@ -12,14 +12,14 @@ import (
 )
 
 func main() {
-	parser, err := fetcher.NewGitlabURLParser(&fetcher.URLParserParams{
+	client, err := fetcher.NewClient(&fetcher.URLParserParams{
 		APIEndpoint:    "https://gitlab.example.com/api/v4",
 		BaseURL:        "https://gitlab.example.com",
 		PrivateToken:   "xxxxxxxxxx",
 		IsDebugLogging: true,
 	})
 
-	page, err := parser.FetchURL("https://gitlab.example.com/user/repo/-/merge_requests/123")
+	page, err := client.FetchURL("https://gitlab.example.com/user/repo/-/merge_requests/123")
 }
 ```
 

@@ -8,7 +8,7 @@ Module for parsing GitLab URLs and retrieving information via GitLab API
 package main
 
 import (
-	fetcher "github.com/sue445/gitpanda_fetcher"
+	"github.com/sue445/gitpanda_fetcher"
 )
 
 func main() {

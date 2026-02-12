@@ -1,7 +1,6 @@
 package gitpanda_fetcher
 
 import (
-	"fmt"
 	"net/http"
 	"strings"
 
@@ -20,12 +19,12 @@ type URLParser struct {
 
 // URLParserParams represents parameters of NewGitlabURLParser
 type URLParserParams struct {
-	APIEndpoint     string
-	BaseURL         string
-	PrivateToken    string
-	GitPandaVersion string
-	IsDebugLogging  bool
-	HTTPClient      *http.Client
+	APIEndpoint    string
+	BaseURL        string
+	PrivateToken   string
+	UserAgent      string
+	IsDebugLogging bool
+	HTTPClient     *http.Client
 }
 
 // NewGitlabURLParser create new URLParser instance
@@ -46,7 +45,7 @@ func NewGitlabURLParser(params *URLParserParams) (*URLParser, error) {
 	}
 
 	p.client = client
-	p.client.UserAgent = fmt.Sprintf("gitpanda/%s (+https://github.com/sue445/gitpanda)", params.GitPandaVersion)
+	p.client.UserAgent = params.UserAgent
 
 	return p, nil
 }

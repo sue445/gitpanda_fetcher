@@ -144,12 +144,12 @@ func TestGitlabUrlParser_FetchURL(t *testing.T) {
 	)
 
 	p, err := NewGitlabURLParser(&URLParserParams{
-		APIEndpoint:     "http://example.com/api/v4",
-		BaseURL:         "http://example.com",
-		PrivateToken:    "xxxxxxxxxx",
-		GitPandaVersion: "v0.0.0",
-		IsDebugLogging:  true,
-		HTTPClient:      http.DefaultClient,
+		APIEndpoint:    "http://example.com/api/v4",
+		BaseURL:        "http://example.com",
+		PrivateToken:   "xxxxxxxxxx",
+		UserAgent:      "gitpanda/v0.1.0 (+https://github.com/sue445/gitpanda)",
+		IsDebugLogging: true,
+		HTTPClient:     http.DefaultClient,
 	})
 
 	if err != nil {

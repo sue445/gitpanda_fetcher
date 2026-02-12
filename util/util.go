@@ -2,7 +2,6 @@ package util
 
 import (
 	"fmt"
-	"regexp"
 	"strings"
 	"time"
 
@@ -58,34 +57,6 @@ func clipNumber(number int, lower int, upper int) int {
 	}
 
 	return number
-}
-
-// FormatMarkdownForSlack returns the formatted text of markdown for slack
-func FormatMarkdownForSlack(str string) string {
-	str = sanitizeEmbedImage(str)
-	str = sanitizeEmptyLink(str)
-	str = toSlackLink(str)
-	return str
-}
-
-// ![text](url) -> text
-func sanitizeEmbedImage(str string) string {
-	return regexp.MustCompile(`\!\[(.*?)\]\(.*?\)`).ReplaceAllString(str, "$1")
-}
-
-// [text](url) -> <url|text>
-func toSlackLink(str string) string {
-	return regexp.MustCompile(`\[(\S+?)\]\((\S+?)\)`).ReplaceAllString(str, "<$2|$1>")
-}
-
-func sanitizeEmptyLink(str string) string {
-	// [](url) -> url
-	str = regexp.MustCompile(`\[\s*?\]\((\S+?)\)`).ReplaceAllString(str, "$1")
-
-	// [text]() -> text
-	str = regexp.MustCompile(`\[(\S+?)\]\(\s*?\)`).ReplaceAllString(str, "$1")
-
-	return str
 }
 
 // WithDebugLogging executes blocks and outputs debug logs if necessary

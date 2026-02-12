@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	client, err := fetcher.NewClient(&fetcher.URLParserParams{
+	client, err := fetcher.NewClient(&fetcher.ClientParams{
 		APIEndpoint:    "https://gitlab.example.com/api/v4",
 		BaseURL:        "https://gitlab.example.com",
 		PrivateToken:   "xxxxxxxxxx",

@@ -1,19 +1,7 @@
 # Requirements: git, go
-NAME     := gitpanda_notion
-VERSION  := $(shell cat VERSION)
-REVISION := $(shell git rev-parse --short HEAD)
+VERSION := $(shell cat VERSION)
 
-SRCS    := $(shell find . -type f -name '*.go')
-LDFLAGS := "-s -w -X \"main.Version=$(VERSION)\" -X \"main.Revision=$(REVISION)\""
-
-.DEFAULT_GOAL := bin/$(NAME)
-
-bin/$(NAME): $(SRCS)
-	go build -ldflags=$(LDFLAGS) -o bin/$(NAME)
-
-.PHONY: clean
-clean:
-	rm -rf bin/*
+.DEFAULT_GOAL := test
 
 .PHONY: test
 test:

@@ -1,4 +1,4 @@
-package gitlab
+package gitpanda_fetcher
 
 // BrandColor represents GitLab color
 const BrandColor = "#fc6d26" // https://brandcolors.net/b/gitlab

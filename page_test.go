@@ -1,4 +1,4 @@
-package gitlab
+package gitpanda_fetcher
 
 import (
 	"github.com/stretchr/testify/assert"

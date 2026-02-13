@@ -1,5 +1,7 @@
-# gitpanda_fetcher
+# gitpanda_fetcher :panda_face:
 Module for parsing [GitLab™](https://about.gitlab.com/) URLs and retrieving information via GitLab API
+
+This is a module spun-off from https://github.com/sue445/gitpanda.
 
 _GITLAB is a trademark of GitLab Inc. in the United States and other countries and regions_
 

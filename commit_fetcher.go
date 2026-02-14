@@ -4,7 +4,6 @@ import (
 	"regexp"
 
 	"github.com/cockroachdb/errors"
-	"github.com/sue445/gitpanda_fetcher/util"
 	"gitlab.com/gitlab-org/api/client-go"
 	"golang.org/x/sync/errgroup"
 )
@@ -28,7 +27,7 @@ func (f *commitFetcher) fetchPath(path string, client *gitlab.Client, isDebugLog
 	var commit *gitlab.Commit
 	eg.Go(func() error {
 		var err error
-		commit, err = util.WithDebugLogging("commitFetcher(GetCommit)", isDebugLogging, func() (*gitlab.Commit, error) {
+		commit, err = WithDebugLogging("commitFetcher(GetCommit)", isDebugLogging, func() (*gitlab.Commit, error) {
 			commit, _, err := client.Commits.GetCommit(projectName, sha, &gitlab.GetCommitOptions{})
 			if err != nil {
 				return nil, errors.WithStack(err)
@@ -44,7 +43,7 @@ func (f *commitFetcher) fetchPath(path string, client *gitlab.Client, isDebugLog
 	var project *gitlab.Project
 	eg.Go(func() error {
 		var err error
-		project, err = util.WithDebugLogging("commitFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
+		project, err = WithDebugLogging("commitFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
 			project, _, err := client.Projects.GetProject(projectName, nil)
 			if err != nil {
 				return nil, errors.WithStack(err)

@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/cockroachdb/errors"
-	"github.com/sue445/gitpanda_fetcher/util"
 	"gitlab.com/gitlab-org/api/client-go"
 	"golang.org/x/sync/errgroup"
 )
@@ -34,7 +33,7 @@ func (f *mergeRequestFetcher) fetchPath(path string, client *gitlab.Client, isDe
 	eg.Go(func() error {
 		var err error
 		mrID, _ := strconv.ParseInt(matched[2], 10, 64)
-		mr, err = util.WithDebugLogging("mergeRequestFetcher(GetMergeRequest)", isDebugLogging, func() (*gitlab.MergeRequest, error) {
+		mr, err = WithDebugLogging("mergeRequestFetcher(GetMergeRequest)", isDebugLogging, func() (*gitlab.MergeRequest, error) {
 			mr, _, err := client.MergeRequests.GetMergeRequest(projectName, mrID, nil)
 			if err != nil {
 				return nil, errors.WithStack(err)
@@ -53,7 +52,7 @@ func (f *mergeRequestFetcher) fetchPath(path string, client *gitlab.Client, isDe
 		matched2 := regexp.MustCompile(`#note_(\d+)$`).FindStringSubmatch(path)
 
 		if matched2 != nil {
-			note, err := util.WithDebugLogging("mergeRequestFetcher(GetMergeRequestNote)", isDebugLogging, func() (*gitlab.Note, error) {
+			note, err := WithDebugLogging("mergeRequestFetcher(GetMergeRequestNote)", isDebugLogging, func() (*gitlab.Note, error) {
 				noteID, _ := strconv.ParseInt(matched2[1], 10, 64)
 				note, _, err := client.Notes.GetMergeRequestNote(projectName, mrID, noteID)
 				if err != nil {
@@ -77,7 +76,7 @@ func (f *mergeRequestFetcher) fetchPath(path string, client *gitlab.Client, isDe
 	var project *gitlab.Project
 	eg.Go(func() error {
 		var err error
-		project, err = util.WithDebugLogging("mergeRequestFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
+		project, err = WithDebugLogging("mergeRequestFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
 			project, _, err := client.Projects.GetProject(projectName, nil)
 			if err != nil {
 				return nil, errors.WithStack(err)

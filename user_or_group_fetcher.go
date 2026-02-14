@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"github.com/cockroachdb/errors"
-	"github.com/sue445/gitpanda_fetcher/util"
 	"gitlab.com/gitlab-org/api/client-go"
 )
 
@@ -45,7 +44,7 @@ func (f *userOrGroupFetcher) fetchPath(path string, client *gitlab.Client, isDeb
 }
 
 func (f *userOrGroupFetcher) fetchUserPath(name string, client *gitlab.Client, isDebugLogging bool) (*Page, error) {
-	user, err := util.WithDebugLogging("userOrGroupFetcher(fetchUserPath)", isDebugLogging, func() (*gitlab.User, error) {
+	user, err := WithDebugLogging("userOrGroupFetcher(fetchUserPath)", isDebugLogging, func() (*gitlab.User, error) {
 		users, _, err := client.Users.ListUsers(&gitlab.ListUsersOptions{Username: &name})
 		if err != nil {
 			return nil, errors.WithStack(err)
@@ -79,7 +78,7 @@ func (f *userOrGroupFetcher) fetchUserPath(name string, client *gitlab.Client, i
 }
 
 func (f *userOrGroupFetcher) fetchGroupPath(name string, client *gitlab.Client, isDebugLogging bool) (*Page, error) {
-	group, err := util.WithDebugLogging("userOrGroupFetcher(fetchGroupPath)", isDebugLogging, func() (*gitlab.Group, error) {
+	group, err := WithDebugLogging("userOrGroupFetcher(fetchGroupPath)", isDebugLogging, func() (*gitlab.Group, error) {
 		// FIXME: `WithProjects` is deprecated and will be removed since API v5.
 		//        However `with_projects` is default to `true`.
 		//        c.f. https://docs.gitlab.com/api/groups/#get-a-single-group

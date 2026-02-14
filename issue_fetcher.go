@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/cockroachdb/errors"
-	"github.com/sue445/gitpanda_fetcher/util"
 	"gitlab.com/gitlab-org/api/client-go"
 	"golang.org/x/sync/errgroup"
 )
@@ -35,7 +34,7 @@ func (f *issueFetcher) fetchPath(path string, client *gitlab.Client, isDebugLogg
 	eg.Go(func() error {
 		var err error
 		issueID, _ := strconv.ParseInt(matched[3], 10, 64)
-		issue, err = util.WithDebugLogging("issueFetcher(GetIssue)", isDebugLogging, func() (*gitlab.Issue, error) {
+		issue, err = withDebugLogging("issueFetcher(GetIssue)", isDebugLogging, func() (*gitlab.Issue, error) {
 			issue, _, err := client.Issues.GetIssue(projectName, issueID)
 			if err != nil {
 				return nil, errors.WithStack(err)
@@ -54,7 +53,7 @@ func (f *issueFetcher) fetchPath(path string, client *gitlab.Client, isDebugLogg
 		matched2 := regexp.MustCompile(`#note_(\d+)$`).FindStringSubmatch(path)
 
 		if matched2 != nil {
-			note, err := util.WithDebugLogging("noteFetcher(GetIssueNote)", isDebugLogging, func() (*gitlab.Note, error) {
+			note, err := withDebugLogging("noteFetcher(GetIssueNote)", isDebugLogging, func() (*gitlab.Note, error) {
 				noteID, _ := strconv.ParseInt(matched2[1], 10, 64)
 				note, _, err := client.Notes.GetIssueNote(projectName, issueID, noteID)
 				if err != nil {
@@ -78,7 +77,7 @@ func (f *issueFetcher) fetchPath(path string, client *gitlab.Client, isDebugLogg
 	var project *gitlab.Project
 	eg.Go(func() error {
 		var err error
-		project, err = util.WithDebugLogging("projectFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
+		project, err = withDebugLogging("projectFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
 			project, _, err := client.Projects.GetProject(projectName, nil)
 			if err != nil {
 				return nil, errors.WithStack(err)

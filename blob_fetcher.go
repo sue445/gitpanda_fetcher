@@ -8,7 +8,6 @@ import (
 	"unicode/utf8"
 
 	"github.com/cockroachdb/errors"
-	"github.com/sue445/gitpanda_fetcher/util"
 	"gitlab.com/gitlab-org/api/client-go"
 	"golang.org/x/sync/errgroup"
 )
@@ -44,7 +43,7 @@ func (f *blobFetcher) fetchPath(path string, client *gitlab.Client, isDebugLoggi
 	selectedFile := ""
 	lineRange := ""
 	eg.Go(func() error {
-		fileBody, err := util.WithDebugLogging("blobFetcher(GetRawFile)", isDebugLogging, func() (*string, error) {
+		fileBody, err := withDebugLogging("blobFetcher(GetRawFile)", isDebugLogging, func() (*string, error) {
 			rawFile, _, err := client.RepositoryFiles.GetRawFile(projectName, fileName, &gitlab.GetRawFileOptions{Ref: &sha1})
 			if err != nil {
 				return nil, errors.WithStack(err)
@@ -72,13 +71,13 @@ func (f *blobFetcher) fetchPath(path string, client *gitlab.Client, isDebugLoggi
 		case 1:
 			line, _ := strconv.Atoi(lines[0])
 			lineRange = lines[0]
-			selectedFile = util.SelectLine(*fileBody, line)
+			selectedFile = selectLine(*fileBody, line)
 			return nil
 		case 2:
 			startLine, _ := strconv.Atoi(lines[0])
 			endLine, _ := strconv.Atoi(lines[1])
 			lineRange = fmt.Sprintf("%s-%s", lines[0], lines[1])
-			selectedFile = util.SelectLines(*fileBody, startLine, endLine)
+			selectedFile = selectLines(*fileBody, startLine, endLine)
 			return nil
 		default:
 			return fmt.Errorf("invalid line: L%s", lineHash)
@@ -88,7 +87,7 @@ func (f *blobFetcher) fetchPath(path string, client *gitlab.Client, isDebugLoggi
 	var project *gitlab.Project
 	eg.Go(func() error {
 		var err error
-		project, err = util.WithDebugLogging("blobFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
+		project, err = withDebugLogging("blobFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
 			project, _, err := client.Projects.GetProject(projectName, nil)
 			if err != nil {
 				return nil, errors.WithStack(err)

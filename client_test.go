@@ -7,7 +7,6 @@ import (
 
 	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"
-	"github.com/sue445/gitpanda_fetcher/testutil"
 )
 
 func tp(t time.Time) *time.Time {
@@ -30,117 +29,117 @@ func TestClient_FetchURL(t *testing.T) {
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/project.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/project.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/gitlab-org%2Fdiaspora-project-site",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/project_without_owner.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/project_without_owner.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/my-group%2Fdiaspora%2Fdiaspora-project-site",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/project_with_subgroup.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/project_with_subgroup.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/issues/1",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/issue.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/issue.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/issues/1/notes/302",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/issue_note.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/issue_note.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/merge_requests/1",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/merge_request.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/merge_request.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/merge_requests/1/notes/301",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/merge_request_note.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/merge_request_note.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/users?username=john_smith",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/users.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/users.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/users?username=gitlab-org",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/users_by_group_name.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/users_by_group_name.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/groups/gitlab-org?with_projects=false",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/group.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/group.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/repository/files/gitlabci-templates%2Fcontinuous_bundle_update%2Eyml/raw?ref=master",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/gitlabci-templates/continuous_bundle_update.yml")),
+		httpmock.NewStringResponder(200, readTestData("testdata/gitlabci-templates/continuous_bundle_update.yml")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/repository/files/icon%2Epng/raw?ref=master",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/icon.png")),
+		httpmock.NewStringResponder(200, readTestData("testdata/icon.png")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/jobs/8",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/job.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/job.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/jobs/8/trace",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/job_trace.txt")),
+		httpmock.NewStringResponder(200, readTestData("testdata/job_trace.txt")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/pipelines/46",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/pipeline.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/pipeline.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/snippets/1",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/project_snippet.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/project_snippet.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/snippets/1/raw",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/snippet_code.rb")),
+		httpmock.NewStringResponder(200, readTestData("testdata/snippet_code.rb")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/snippets/3",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/project_snippet.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/project_snippet.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/snippets/1/notes/400",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/project_snippet_note.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/project_snippet_note.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/snippets/3/raw",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/snippet_code.rb")),
+		httpmock.NewStringResponder(200, readTestData("testdata/snippet_code.rb")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/projects/diaspora%2Fdiaspora-project-site/repository/commits/c9ddb5f48418b4e2a9e41982b8177018114003d1",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/commit.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/commit.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/groups/gitlab-org/epics/1",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/epic.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/epic.json")),
 	)
 	httpmock.RegisterResponder(
 		"GET",
 		"http://example.com/api/v4/groups/gitlab-org/epics/30/notes/2",
-		httpmock.NewStringResponder(200, testutil.ReadTestData("testdata/epic_note.json")),
+		httpmock.NewStringResponder(200, readTestData("testdata/epic_note.json")),
 	)
 
 	c, err := NewClient(&ClientParams{

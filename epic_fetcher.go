@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/cockroachdb/errors"
-	"github.com/sue445/gitpanda_fetcher/util"
 	"gitlab.com/gitlab-org/api/client-go"
 	"golang.org/x/sync/errgroup"
 )
@@ -34,7 +33,7 @@ func (f *epicFetcher) fetchPath(path string, client *gitlab.Client, isDebugLoggi
 
 	eg.Go(func() error {
 		var err error
-		epic, err = util.WithDebugLogging("epicFetcher(GetEpic)", isDebugLogging, func() (*gitlab.Epic, error) {
+		epic, err = withDebugLogging("epicFetcher(GetEpic)", isDebugLogging, func() (*gitlab.Epic, error) {
 			epicIID, _ := strconv.ParseInt(matched[2], 10, 64)
 			epic, _, err := client.Epics.GetEpic(groupName, epicIID)
 			if err != nil {
@@ -56,7 +55,7 @@ func (f *epicFetcher) fetchPath(path string, client *gitlab.Client, isDebugLoggi
 		if matched2 != nil {
 			noteID, _ := strconv.ParseInt(matched2[1], 10, 64)
 
-			note, err := util.WithDebugLogging("noteFetcher(GetEpicNote)", isDebugLogging, func() (*gitlab.Note, error) {
+			note, err := withDebugLogging("noteFetcher(GetEpicNote)", isDebugLogging, func() (*gitlab.Note, error) {
 				note, _, err := client.Notes.GetEpicNote(groupName, epic.ID, noteID)
 				if err != nil {
 					return nil, errors.WithStack(err)
@@ -78,7 +77,7 @@ func (f *epicFetcher) fetchPath(path string, client *gitlab.Client, isDebugLoggi
 	var group *gitlab.Group
 	eg.Go(func() error {
 		var err error
-		group, err = util.WithDebugLogging("groupFetcher(GetGroup)", isDebugLogging, func() (*gitlab.Group, error) {
+		group, err = withDebugLogging("groupFetcher(GetGroup)", isDebugLogging, func() (*gitlab.Group, error) {
 			// FIXME: `WithProjects` is deprecated and will be removed since API v5.
 			//        However `with_projects` is default to `true`.
 			//        c.f. https://docs.gitlab.com/api/groups/#get-a-single-group

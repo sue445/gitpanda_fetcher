@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/cockroachdb/errors"
-	"github.com/sue445/gitpanda_fetcher/util"
 	"gitlab.com/gitlab-org/api/client-go"
 	"golang.org/x/sync/errgroup"
 )
@@ -33,7 +32,7 @@ func (f *snippetFetcher) fetchPath(path string, client *gitlab.Client, isDebugLo
 
 	eg.Go(func() error {
 		var err error
-		snippet, err = util.WithDebugLogging("snippetFetcher(GetSnippet)", isDebugLogging, func() (*gitlab.Snippet, error) {
+		snippet, err = withDebugLogging("snippetFetcher(GetSnippet)", isDebugLogging, func() (*gitlab.Snippet, error) {
 			snippet, _, err := client.Snippets.GetSnippet(snippetID)
 			if err != nil {
 				return nil, errors.WithStack(err)
@@ -53,7 +52,7 @@ func (f *snippetFetcher) fetchPath(path string, client *gitlab.Client, isDebugLo
 	content := ""
 
 	eg.Go(func() error {
-		body, err := util.WithDebugLogging("snippetFetcher(SnippetContent)", isDebugLogging, func() (*string, error) {
+		body, err := withDebugLogging("snippetFetcher(SnippetContent)", isDebugLogging, func() (*string, error) {
 			rawFile, _, err := client.Snippets.SnippetContent(snippetID)
 			if err != nil {
 				return nil, errors.WithStack(err)

@@ -1,4 +1,4 @@
-package util
+package fetcher
 
 import (
 	"fmt"
@@ -8,8 +8,8 @@ import (
 	"github.com/cockroachdb/errors"
 )
 
-// TruncateWithLine truncate string with line
-func TruncateWithLine(str string, maxLines int) string {
+// truncateWithLine truncate string with line
+func truncateWithLine(str string, maxLines int) string {
 	if maxLines < 1 {
 		return str
 	}
@@ -24,8 +24,8 @@ func TruncateWithLine(str string, maxLines int) string {
 	return str
 }
 
-// SelectLine returns a specific line in the text
-func SelectLine(str string, line int) string {
+// selectLine returns a specific line in the text
+func selectLine(str string, line int) string {
 	lines := strings.Split(str, "\n")
 
 	line = clipNumber(line, 1, len(lines))
@@ -33,8 +33,8 @@ func SelectLine(str string, line int) string {
 	return lines[line-1]
 }
 
-// SelectLines returns a specific lines in the text
-func SelectLines(str string, startLine int, endLine int) string {
+// selectLines returns a specific lines in the text
+func selectLines(str string, startLine int, endLine int) string {
 	lines := strings.Split(str, "\n")
 
 	startLine = clipNumber(startLine, 1, len(lines))
@@ -59,8 +59,8 @@ func clipNumber(number int, lower int, upper int) int {
 	return number
 }
 
-// WithDebugLogging executes blocks and outputs debug logs if necessary
-func WithDebugLogging[T any](label string, isDebugLogging bool, fn func() (*T, error)) (*T, error) {
+// withDebugLogging executes blocks and outputs debug logs if necessary
+func withDebugLogging[T any](label string, isDebugLogging bool, fn func() (*T, error)) (*T, error) {
 	start := time.Now()
 
 	ret, err := fn()

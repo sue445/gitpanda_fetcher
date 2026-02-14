@@ -43,7 +43,7 @@ func TestTruncateWithLine(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := TruncateWithLine(tt.args.str, tt.args.maxLines)
+			got := truncateWithLine(tt.args.str, tt.args.maxLines)
 
 			assert.Equal(t, tt.want, got)
 		})
@@ -75,8 +75,8 @@ func TestSelectLine(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := SelectLine(tt.args.str, tt.args.line); got != tt.want {
-				t.Errorf("SelectLine() = %+v, want %+v", got, tt.want)
+			if got := selectLine(tt.args.str, tt.args.line); got != tt.want {
+				t.Errorf("selectLine() = %+v, want %+v", got, tt.want)
 			}
 		})
 	}
@@ -112,7 +112,7 @@ func TestSelectLines(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got := SelectLines(tt.args.str, tt.args.startLine, tt.args.endLine)
+			got := selectLines(tt.args.str, tt.args.startLine, tt.args.endLine)
 
 			assert.Equal(t, tt.want, got)
 		})

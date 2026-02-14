@@ -4,8 +4,8 @@ import (
 	"os"
 )
 
-// ReadTestData returns testdata
-func ReadTestData(filename string) string {
+// readTestData returns testdata
+func readTestData(filename string) string {
 	buf, err := os.ReadFile(filename)
 
 	if err != nil {

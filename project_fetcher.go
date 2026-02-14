@@ -21,7 +21,7 @@ func (f *projectFetcher) fetchPath(path string, client *gitlab.Client, isDebugLo
 		return nil, nil
 	}
 
-	project, err := WithDebugLogging("projectFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
+	project, err := withDebugLogging("projectFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
 		project, _, err := client.Projects.GetProject(matched[1], nil)
 		if err != nil {
 			return nil, errors.WithStack(err)

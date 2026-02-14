@@ -29,7 +29,7 @@ func (f *pipelineFetcher) fetchPath(path string, client *gitlab.Client, isDebugL
 	var pipeline *gitlab.Pipeline
 	eg.Go(func() error {
 		var err error
-		pipeline, err = WithDebugLogging("pipelineFetcher(GetPipeline)", isDebugLogging, func() (*gitlab.Pipeline, error) {
+		pipeline, err = withDebugLogging("pipelineFetcher(GetPipeline)", isDebugLogging, func() (*gitlab.Pipeline, error) {
 			pipelineID, _ := strconv.ParseInt(matched[2], 10, 64)
 			pipeline, _, err := client.Pipelines.GetPipeline(projectName, pipelineID)
 			if err != nil {
@@ -46,7 +46,7 @@ func (f *pipelineFetcher) fetchPath(path string, client *gitlab.Client, isDebugL
 	var project *gitlab.Project
 	eg.Go(func() error {
 		var err error
-		project, err = WithDebugLogging("pipelineFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
+		project, err = withDebugLogging("pipelineFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
 			project, _, err := client.Projects.GetProject(projectName, nil)
 			if err != nil {
 				return nil, errors.WithStack(err)

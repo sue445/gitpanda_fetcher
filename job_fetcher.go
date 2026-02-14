@@ -33,7 +33,7 @@ func (f *jobFetcher) fetchPath(path string, client *gitlab.Client, isDebugLoggin
 	var job *gitlab.Job
 	eg.Go(func() error {
 		var err error
-		job, err = WithDebugLogging("jobFetcher(GetJob)", isDebugLogging, func() (*gitlab.Job, error) {
+		job, err = withDebugLogging("jobFetcher(GetJob)", isDebugLogging, func() (*gitlab.Job, error) {
 			job, _, err := client.Jobs.GetJob(projectName, jobID)
 			if err != nil {
 				return nil, errors.WithStack(err)
@@ -52,7 +52,7 @@ func (f *jobFetcher) fetchPath(path string, client *gitlab.Client, isDebugLoggin
 	if lineMatched != nil {
 		eg.Go(func() error {
 			var err error
-			body, err := WithDebugLogging("jobFetcher(GetTraceFile)", isDebugLogging, func() (*string, error) {
+			body, err := withDebugLogging("jobFetcher(GetTraceFile)", isDebugLogging, func() (*string, error) {
 				reader, _, err := client.Jobs.GetTraceFile(projectName, jobID)
 				if err != nil {
 					return nil, errors.WithStack(err)
@@ -78,11 +78,11 @@ func (f *jobFetcher) fetchPath(path string, client *gitlab.Client, isDebugLoggin
 			switch len(lines) {
 			case 1:
 				line, _ := strconv.Atoi(lines[0])
-				selectedLine = SelectLine(traceBody, line)
+				selectedLine = selectLine(traceBody, line)
 			case 2:
 				startLine, _ := strconv.Atoi(lines[0])
 				endLine, _ := strconv.Atoi(lines[1])
-				selectedLine = SelectLines(traceBody, startLine, endLine)
+				selectedLine = selectLines(traceBody, startLine, endLine)
 			default:
 				return fmt.Errorf("invalid line: L%s", lineHash)
 			}
@@ -93,7 +93,7 @@ func (f *jobFetcher) fetchPath(path string, client *gitlab.Client, isDebugLoggin
 	var project *gitlab.Project
 	eg.Go(func() error {
 		var err error
-		project, err = WithDebugLogging("jobFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
+		project, err = withDebugLogging("jobFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
 			project, _, err := client.Projects.GetProject(projectName, nil)
 			if err != nil {
 				return nil, errors.WithStack(err)

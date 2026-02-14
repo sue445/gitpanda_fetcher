@@ -36,7 +36,7 @@ func (f *projectSnippetFetcher) fetchPath(path string, client *gitlab.Client, is
 
 	eg.Go(func() error {
 		var err error
-		snippet, err = WithDebugLogging("projectSnippetFetcher(GetSnippet)", isDebugLogging, func() (*gitlab.Snippet, error) {
+		snippet, err = withDebugLogging("projectSnippetFetcher(GetSnippet)", isDebugLogging, func() (*gitlab.Snippet, error) {
 			snippet, _, err := client.ProjectSnippets.GetSnippet(projectName, snippetID)
 			if err != nil {
 				return nil, errors.WithStack(err)
@@ -54,7 +54,7 @@ func (f *projectSnippetFetcher) fetchPath(path string, client *gitlab.Client, is
 		matched2 := regexp.MustCompile(`#note_(\d+)$`).FindStringSubmatch(path)
 
 		if matched2 != nil {
-			note, err = WithDebugLogging("projectSnippetFetcher(GetSnippetNote)", isDebugLogging, func() (*gitlab.Note, error) {
+			note, err = withDebugLogging("projectSnippetFetcher(GetSnippetNote)", isDebugLogging, func() (*gitlab.Note, error) {
 				noteID, _ := strconv.ParseInt(matched2[1], 10, 64)
 				note, _, err := client.Notes.GetSnippetNote(projectName, snippetID, noteID)
 				if err != nil {
@@ -74,7 +74,7 @@ func (f *projectSnippetFetcher) fetchPath(path string, client *gitlab.Client, is
 	content := ""
 
 	eg.Go(func() error {
-		body, err := WithDebugLogging("projectSnippetFetcher(SnippetContent)", isDebugLogging, func() (*string, error) {
+		body, err := withDebugLogging("projectSnippetFetcher(SnippetContent)", isDebugLogging, func() (*string, error) {
 			rawFile, _, err := client.ProjectSnippets.SnippetContent(projectName, snippetID)
 			if err != nil {
 				return nil, errors.WithStack(err)
@@ -94,7 +94,7 @@ func (f *projectSnippetFetcher) fetchPath(path string, client *gitlab.Client, is
 	var project *gitlab.Project
 	eg.Go(func() error {
 		var err error
-		project, err = WithDebugLogging("projectSnippetFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
+		project, err = withDebugLogging("projectSnippetFetcher(GetProject)", isDebugLogging, func() (*gitlab.Project, error) {
 			project, _, err := client.Projects.GetProject(projectName, nil)
 			if err != nil {
 				return nil, errors.WithStack(err)

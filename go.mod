@@ -8,7 +8,7 @@ require (
 	github.com/jarcoal/httpmock v1.4.1
 	github.com/stretchr/testify v1.11.1
 	gitlab.com/gitlab-org/api/client-go v1.44.0
-	golang.org/x/sync v0.19.0
+	golang.org/x/sync v0.20.0
 )
 
 require (

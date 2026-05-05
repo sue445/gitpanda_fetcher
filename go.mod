@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/acarl005/stripansi v0.0.0-20180116102854-5a71ef0e047d
-	github.com/cockroachdb/errors v1.12.0
+	github.com/cockroachdb/errors v1.13.0
 	github.com/jarcoal/httpmock v1.4.1
 	github.com/stretchr/testify v1.11.1
 	gitlab.com/gitlab-org/api/client-go v1.46.0
@@ -15,7 +15,7 @@ require (
 	github.com/cockroachdb/logtags v0.0.0-20230118201751-21c54148d20b // indirect
 	github.com/cockroachdb/redact v1.1.5 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/getsentry/sentry-go v0.42.0 // indirect
+	github.com/getsentry/sentry-go v0.46.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/google/go-querystring v1.2.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect

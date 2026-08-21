@@ -73,7 +73,7 @@ func TestClient_FetchURL(t *testing.T) {
 	)
 	httpmock.RegisterResponder(
 		"GET",
-		"http://example.com/api/v4/groups/gitlab-org?with_projects=false",
+		"http://example.com/api/v4/groups/gitlab-org",
 		httpmock.NewStringResponder(200, readTestData("testdata/group.json")),
 	)
 	httpmock.RegisterResponder(

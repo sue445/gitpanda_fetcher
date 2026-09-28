@@ -22,7 +22,7 @@
   ],
   "packageRules": [
     {
-      "description": "Disable all package updates except for go-github",
+      "description": "Disable all package updates except for client-go",
       "enabled": false,
       "matchPackageNames": [
         "!/^gitlab\\.com/gitlab-org/api/client-go(/.*)?$/"

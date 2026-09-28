@@ -10,7 +10,7 @@ import (
 
 	"github.com/acarl005/stripansi"
 	"github.com/cockroachdb/errors"
-	"gitlab.com/gitlab-org/api/client-go"
+	"gitlab.com/gitlab-org/api/client-go/v3"
 	"golang.org/x/sync/errgroup"
 )
 

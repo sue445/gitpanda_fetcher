@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/cockroachdb/errors"
-	"gitlab.com/gitlab-org/api/client-go"
+	"gitlab.com/gitlab-org/api/client-go/v3"
 )
 
 type projectFetcher struct {

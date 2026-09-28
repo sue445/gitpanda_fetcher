@@ -7,7 +7,7 @@ require (
 	github.com/cockroachdb/errors v1.14.0
 	github.com/jarcoal/httpmock v1.4.2
 	github.com/stretchr/testify v1.12.1
-	gitlab.com/gitlab-org/api/client-go v1.46.0
+	gitlab.com/gitlab-org/api/client-go/v3 v3.12.0
 	golang.org/x/sync v0.23.0
 )
 
@@ -24,8 +24,8 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/rogpeppe/go-internal v1.11.0 // indirect
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
-	golang.org/x/oauth2 v0.34.0 // indirect
-	golang.org/x/sys v0.39.0 // indirect
+	golang.org/x/oauth2 v0.36.0 // indirect
+	golang.org/x/sys v0.47.0 // indirect
 	golang.org/x/text v0.32.0 // indirect
-	golang.org/x/time v0.14.0 // indirect
+	golang.org/x/time v0.15.0 // indirect
 )

@@ -3,7 +3,7 @@ package fetcher
 import (
 	"regexp"
 
-	"gitlab.com/gitlab-org/api/client-go"
+	"gitlab.com/gitlab-org/api/client-go/v3"
 )
 
 // reProjectName represents regular expression matching to a project name

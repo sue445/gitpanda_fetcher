@@ -7,7 +7,7 @@ require (
 	github.com/cockroachdb/errors v1.14.0
 	github.com/jarcoal/httpmock v1.4.2
 	github.com/stretchr/testify v1.12.1
-	gitlab.com/gitlab-org/api/client-go/v3 v3.12.0
+	gitlab.com/gitlab-org/api/client-go/v3 v3.14.0
 	golang.org/x/sync v0.23.0
 )
 

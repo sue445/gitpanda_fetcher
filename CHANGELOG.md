@@ -1,5 +1,12 @@
 ## Unreleased
-[full changelog](http://github.com/sue445/gitpanda_fetcher/compare/v1.0.2...main)
+[full changelog](http://github.com/sue445/gitpanda_fetcher/compare/v1.0.3...main)
+
+## [v1.0.3](https://github.com/sue445/gitpanda_fetcher/releases/tag/v1.0.3)
+[full changelog](http://github.com/sue445/gitpanda_fetcher/compare/v1.0.2...v1.0.3)
+
+* Introduce gosec
+  * https://github.com/sue445/gitpanda_fetcher/pull/68
+* Update dependencies
 
 ## [v1.0.2](https://github.com/sue445/gitpanda_fetcher/releases/tag/v1.0.2)
 [full changelog](http://github.com/sue445/gitpanda_fetcher/compare/v1.0.1...v1.0.2)
